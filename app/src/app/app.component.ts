@@ -8,7 +8,6 @@ import {MatCardModule} from '@angular/material/card';
   selector: 'app-root',
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatCardModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'app';
