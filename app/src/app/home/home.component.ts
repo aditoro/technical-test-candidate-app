@@ -2,7 +2,6 @@ import { Component, inject, computed } from '@angular/core';
 import { CandidateListComponent } from '../components/candidate-list/candidate-list.component';
 import { CandidateFormComponent } from '../components/candidate-form/candidate-form.component';
 import {CandidateService} from '../candidate.service';
-import { Candidate } from '../../candidate';
 @Component({
   selector: 'app-home',
   imports: [CandidateListComponent, CandidateFormComponent],
@@ -10,10 +9,12 @@ import { Candidate } from '../../candidate';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  // candidates: Candidate[] = []
   private candidateService = inject(CandidateService)
   candidatesList = computed(() => {
     return this.candidateService.getCandidates()()
   });
+  constructor () {
+    this.candidateService.fetchAllCandidates()
+  }
 
 }
