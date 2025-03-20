@@ -27,7 +27,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class ModalFormComponent {
   form: FormGroup;
-  seniorityLevels: CandidateSeniority[] = ['junior', 'mid', 'senior'];
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ModalFormComponent>
@@ -35,9 +34,6 @@ export class ModalFormComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      seniority: ['', Validators.required],
-      years: [0, [Validators.required, Validators.min(0)]],
-      availability: [false]
     });
   }
 
