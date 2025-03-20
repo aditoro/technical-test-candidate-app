@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog'; // Asegúrate de importar esto
@@ -8,8 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-import { CandidateSeniority } from '../../../../candidate';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {CandidateService} from '../../../candidate.service';
+
 @Component({
   selector: 'app-modal-form',
   standalone: true,
@@ -27,10 +28,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class ModalFormComponent {
   form: FormGroup;
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ModalFormComponent>
-  ) {
+  private candidateService = inject(CandidateService)
+
+  constructor( private fb: FormBuilder, private dialogRef: MatDialogRef<ModalFormComponent>) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -39,8 +39,11 @@ export class ModalFormComponent {
 
   submitForm() {
     if (this.form.valid) {
-      console.log('Datos del formulario:', this.form.value);
-      this.dialogRef.close(this.form.value);
+      this.candidateService.createCandidate(this.form.value).then(() => {
+        this.dialogRef.close(this.form.value);
+      }).catch(() => {
+        alert('error!!!!')
+      })
     }
   }
 
