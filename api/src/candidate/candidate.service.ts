@@ -3,15 +3,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CandidateEntity } from './candidate.entity';
-
+import { CandidateDto } from './candidate.dto';
 @Injectable()
 export class CandidateService {
   constructor(
     @InjectRepository(CandidateEntity)
-    private candidateRepository: Repository<CandidateEntity>, // Inyectamos el repositorio de la entidad User
+    private candidateRepository: Repository<CandidateEntity>,
   ) {}
 
-  async create(candidate: CandidateEntity): Promise<CandidateEntity> {
+  async create(candidate: CandidateDto): Promise<CandidateEntity> {
     return this.candidateRepository.save(candidate);
   }
 
@@ -19,18 +19,7 @@ export class CandidateService {
     return this.candidateRepository.find();
   }
 
-  // async findOne(id: number): Promise<Candidate> {
-  //   return this.candidateRepository.findOne(id);
+  // async remove(id: number): Promise<void> {
+  //   await this.candidateRepository.delete(id);
   // }
-
-  // // Actualizar un usuario
-  // async update(id: number, user: Candidate): Promise<Candidate> {
-  //   await this.candidateRepository.update(id, user);
-  //   return this.candidateRepository.findOne(id);
-  // }
-
-  // Eliminar un usuario
-  async remove(id: number): Promise<void> {
-    await this.candidateRepository.delete(id);
-  }
 }
