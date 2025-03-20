@@ -1,1 +1,57 @@
-<p>modal-form works!</p>
+<style>
+  form{
+    padding: 20px 0;
+  }
+  .form-field{
+    display: block;
+    margin-bottom: 20px;
+  }
+</style>
+<h2 mat-dialog-title>Create new candidate</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Name">
+      <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        The name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname" placeholder="Surname">
+      <mat-error *ngIf="form.get('surname')?.invalid && form.get('surname')?.touched">
+        The surnmae is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Seniority</mat-label>
+      <mat-select formControlName="seniority" required>
+        <mat-option *ngFor="let level of seniorityLevels" [value]="level">
+          {{ level | titlecase }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('seniority')?.invalid">Select seniority</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Years of experience</mat-label>
+      <input matInput type="number" formControlName="years" required>
+      <mat-error *ngIf="form.get('years')?.invalid">Must be number</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="availability">Available</mat-checkbox>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="submitForm()">
+    Create candidate
+  </button>
+</mat-dialog-actions>

@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 @Component({
   selector: 'candidate-form',
-  imports: [MatDialogModule],
+  imports: [],
   template: '',
 })
 export class CandidateFormComponent {
@@ -22,7 +22,9 @@ export class CandidateFormComponent {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalFormComponent, {
-      width: '400px'
+      maxWidth: '800px',
+      minWidth: '500px',
+      minHeight: '400px'
     });
 
     dialogRef.afterClosed().subscribe(() => {
