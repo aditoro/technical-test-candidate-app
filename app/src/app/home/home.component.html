@@ -1,4 +1,18 @@
+<style>
+section{
+  margin: 20px 0;
+}
+.section-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
 <div>
-  <candidate-form/>
+  <section class="section-title" >
+    <h3>Candidate managment App </h3>
+    <button mat-flat-button (click)="openForm()">Create  candidate </button>
+  </section>
+  <candidate-form [isFomOpen]="isFormOpen()" (closeForm)="closeForm()"/>
   <candidate-list [candidates]="candidatesList()"/>
 </div>
