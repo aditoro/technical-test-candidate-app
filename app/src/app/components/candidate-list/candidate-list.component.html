@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill">
-  <mat-label>Filter</mat-label>
-  <input appearance="outline" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  <mat-label>Filter candidates</mat-label>
+  <input appearance="outline" matInput (keyup)="applyFilter($event)" placeholder="Ex. write name, surname, year ..." #input>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

@@ -1,4 +1,4 @@
-export type CandidateSeniority = 'junior' | 'mid' | 'senior'
+export type CandidateSeniority = 'junior' | 'senior'
 
 export interface CandidateBase {
   name: string
