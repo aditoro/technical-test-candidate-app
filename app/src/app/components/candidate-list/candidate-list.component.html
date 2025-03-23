@@ -1,3 +1,13 @@
+<style>
+table {
+  width: 100%;
+}
+  
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+</style>
 <mat-form-field appearance="fill">
   <mat-label>Filter candidates</mat-label>
   <input appearance="outline" matInput (keyup)="applyFilter($event)" placeholder="Ex. write name, surname, year ..." #input>

@@ -4,12 +4,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Candidate } from '../../../candidate';
 
-
 @Component({
   selector: 'candidate-list',
   imports: [MatFormFieldModule, MatInputModule, MatTableModule],
   templateUrl: './candidate-list.component.html',
-  styleUrl: './candidate-list.component.css'
 })
 
 export class CandidateListComponent {

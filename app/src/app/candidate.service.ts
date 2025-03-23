@@ -13,8 +13,16 @@ export class CandidateService {
   constructor(private http: HttpClient) {}
 
   fetchAllCandidates () {
-    this.http.get<Candidate[]>(`${this.apiUrl}/candidates`).subscribe((candidates) => {
-      this.candidates.set(candidates)
+    return new Promise((resolve, reject) => {
+      this.http.get<Candidate[]>(`${this.apiUrl}/candidates`).subscribe({
+        next: (candidates) => {
+          this.candidates.set(candidates);
+          resolve(candidates);
+        },
+        error: (error) => {
+          reject(error)
+        }
+      })
     })
   }
 
@@ -30,7 +38,6 @@ export class CandidateService {
           this.candidates.update((candidates) => [...candidates, response] )
         },
         error: (error) => {
-          console.log(error.error.errors)
           reject(error.error.errors)
         }
       })
