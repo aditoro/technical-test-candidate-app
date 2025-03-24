@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CandidateEntity } from './candidate.entity';
-import { CandidateDto } from './candidate.dto';
+// import { CandidateDto } from './candidate.dto';
 @Injectable()
 export class CandidateService {
   constructor(
@@ -11,7 +11,7 @@ export class CandidateService {
     private candidateRepository: Repository<CandidateEntity>,
   ) {}
 
-  async create(candidate: CandidateDto): Promise<CandidateEntity> {
+  async create(candidate: CandidateEntity): Promise<CandidateEntity> {
     return this.candidateRepository.save(candidate);
   }
 
