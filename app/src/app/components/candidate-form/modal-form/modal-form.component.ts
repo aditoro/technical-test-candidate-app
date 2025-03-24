@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog'; // Asegúrate de importar esto
@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {CandidateService} from '../../../candidate.service';
-import { CandidateForm } from '../../../../candidate';
-
+// import { CandidateForm } from '../../../../candidate';
+import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-modal-form',
   standalone: true,
@@ -24,14 +24,15 @@ import { CandidateForm } from '../../../../candidate';
     MatButtonModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule
   ]
 })
 export class ModalFormComponent {
   form: FormGroup;
   private candidateService = inject(CandidateService)
   serverErrors = signal<string[]>([])
-
+  @ViewChild('excel') excelFileInput!: ElementRef<HTMLInputElement>;
 
   constructor( private fb: FormBuilder, private dialogRef: MatDialogRef<ModalFormComponent>) {
     this.form = this.fb.group({
@@ -44,6 +45,13 @@ export class ModalFormComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.form.patchValue({ file: input.files[0] });
+    }
+  }
+
+  clearFile() {
+    this.form.patchValue({ file: null });
+    if (this.excelFileInput) {
+      this.excelFileInput.nativeElement.value = ''; // Borra el archivo seleccionado
     }
   }
   submitForm() {

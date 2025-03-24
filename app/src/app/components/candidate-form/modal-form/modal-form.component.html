@@ -8,7 +8,12 @@
   }
   .label-selected-file{
     margin-left: 10px;
-    display: inline-block;
+    display: inline-flex;
+  }
+  .reset-file-icon{
+    margin-left: 5px;
+    margin-top: -2px;
+    cursor: pointer;
   }
 </style>
 <h2 mat-dialog-title>Create new candidate</h2>
@@ -34,8 +39,16 @@
     <div class="form-field">
       <input hidden #excel type="file"  placeholder="Surname" (change)="onFileSelected($event)" accept=".xlsx, .xls">
       <button mat-stroked-button color="primary" (click)="excel.click()">Upload excel*</button>
+      
+      <span class="label-selected-file" *ngIf="!form.controls['file'].value;">
+        <a mat-button href="/candidate-sample.xlsx" download>
+          Download sample excel file
+        </a>
+      </span>
+      
       <span class="label-selected-file" *ngIf="form.controls['file'].value; else errorFile">
         <strong>{{ form.controls['file'].value?.name }}</strong>
+        <mat-icon class="reset-file-icon" (click)="clearFile()">cancel</mat-icon>
       </span>
       <ng-template #errorFile>
         <div *ngIf="form.controls['file'].invalid && form.controls['file'].touched" style="color: red;">
