@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/angular';  
-import { AppComponent } from './app.component';  
+import { AppComponent } from './../app/app.component';  
 
 // Simple test check
 describe('AppComponent', () => {  

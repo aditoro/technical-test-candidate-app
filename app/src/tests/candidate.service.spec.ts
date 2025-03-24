@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { CandidateService } from './candidate.service';
+import { CandidateService } from './../app/candidate.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { mockCandidates, mockCandidateForm } from './../fixtures/candidate.fixtures';
+import { mockCandidates, mockCandidateForm } from '../tests/fixtures/candidate.fixtures';
 
 // we can move this in a fixture file 
 
