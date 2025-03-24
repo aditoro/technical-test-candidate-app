@@ -3,10 +3,10 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { Candidate } from '../../../candidate';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'candidate-list',
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, CommonModule],
   templateUrl: './candidate-list.component.html',
 })
 
