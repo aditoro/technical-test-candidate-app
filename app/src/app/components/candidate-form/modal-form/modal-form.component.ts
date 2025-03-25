@@ -1,7 +1,7 @@
 import { Component, inject, signal, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog'; // Asegúrate de importar esto
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {CandidateService} from '../../../candidate.service';
-// import { CandidateForm } from '../../../../candidate';
 import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-modal-form',

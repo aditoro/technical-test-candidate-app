@@ -14,5 +14,5 @@ section{
     <button mat-flat-button (click)="openForm()">Create  candidate </button>
   </section>
   <candidate-form [isFomOpen]="isFormOpen()" (closeForm)="closeForm()"/>
-  <candidate-list [candidates]="candidatesList()"/>
+  <candidate-list [candidates]="candidatesList()" (deleteCandidate)="deleteCandidate($event)"/>
 </div>

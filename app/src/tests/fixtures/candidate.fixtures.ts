@@ -1,9 +1,9 @@
 import { Candidate, CandidateForm } from '../../candidate';
 
 const mockCandidates: Candidate[] = [
-  { name: 'Name1', surname: 'Surname1', seniority: 'senior', years: 1, availability: true },
-  { name: 'Name2', surname: 'Surname2', seniority: 'junior', years: 2, availability: false },
-  { name: 'Name3', surname: 'Surname3', seniority: 'senior', years: 3, availability: true },
+  { id: 1, name: 'Name1', surname: 'Surname1', seniority: 'senior', years: 1, availability: true },
+  { id: 2, name: 'Name2', surname: 'Surname2', seniority: 'junior', years: 2, availability: false },
+  { id: 3, name: 'Name3', surname: 'Surname3', seniority: 'senior', years: 3, availability: true },
 
 ];
 

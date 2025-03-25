@@ -35,17 +35,35 @@ export class CandidateService {
       this.http.post<Candidate>(`${this.apiUrl}/candidates`, formData).subscribe({
         next: (response) => {
           resolve(response)
-          this.candidates.update((candidates) => [...candidates, response] )
+          this.addCandidate(response)
         },
         error: (error) => {
           reject(error.error.errors)
         }
       })
-
     })
+  }
+
+  addCandidate (candidate: Candidate) {
+    this.candidates.update((candidates) => [...candidates, candidate] )
   }
   getCandidates () {
     return this.candidates.asReadonly()
+  }
+
+  deleteCandidate (candidate: Candidate) {
+    return new Promise((resolve, reject) => {
+      this.http.delete(`${this.apiUrl}/candidates/${candidate.id}`).subscribe({
+        next: () => {
+          this.candidates.update((candidates) =>  candidates.filter((c) => c.id !== candidate.id))
+          resolve(true)
+        },
+        error: (error) => {
+          reject(error)
+        }
+      })
+    })
+
   }
 
 }

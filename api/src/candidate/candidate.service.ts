@@ -19,7 +19,7 @@ export class CandidateService {
     return this.candidateRepository.find();
   }
 
-  // async remove(id: number): Promise<void> {
-  //   await this.candidateRepository.delete(id);
-  // }
+  async remove(id: number): Promise<void> {
+    await this.candidateRepository.delete(id);
+  }
 }

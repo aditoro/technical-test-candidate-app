@@ -6,7 +6,8 @@ import {
   UseInterceptors,
   UploadedFile,
   BadRequestException,
-  // Delete,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CandidateService } from './candidate.service';
@@ -57,8 +58,8 @@ export class CandidateController {
     return this.candidateService.findAll();
   }
 
-  // @Delete(':id')
-  // async remove(@Param('id') id: number): Promise<void> {
-  //   return this.usersService.remove(id);
-  // }
+  @Delete(':id')
+  async remove(@Param('id') id: number): Promise<void> {
+    return this.candidateService.remove(id);
+  }
 }

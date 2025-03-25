@@ -10,6 +10,7 @@ export interface CandidateForm extends CandidateBase {
 }
 
 export interface Candidate extends CandidateBase {
+  id?: number
   seniority: CandidateSeniority
   years: number
   availability: boolean
