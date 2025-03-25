@@ -9,6 +9,7 @@ export class AppService {
       <ul>
         <li>[GET] /candidates</li>
         <li>[POST] /candidates</li>
+        <li>[DELETE] /candidates/{id}</li>
       </ul>
     `;
   }
